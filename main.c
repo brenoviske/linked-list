@@ -1,20 +1,19 @@
-#include "arena.h"
-#include "node.h"
+#include "headers/arena.h"
+#include "headers/ctt.h"
+#include "headers/node.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void){
-    
+
     Arena *arena = create_arena(1024);
-    if(arena == NULL ) return EXIT_FAILURE;
+    if( arena == NULL ) return EXIT_FAILURE;
 
-    Node *head = create_node(arena,10);
-    head->next = create_node(arena,20);
+    Ctt *new_ctt = create_ctt(arena,"Breno",22,"12991076796");
     
-    int total = sum(head);
+    Node *head = create_node(arena,new_ctt);
 
-    printf("Total sum:%d\n",total);
-    destroy_arena(arena);// Releasing the memory here;
-
+    destroy_arena(arena);
     return EXIT_SUCCESS;
+    
 }
